@@ -65,15 +65,19 @@ Contributions, questions, or replications are welcome.
 UPDATE: 
 
 Hyper-Holographic Gauge v6 – Deterministic Regime-Aware Quantum Computing on IBM Kingston
-After extensive multi-day testing on the IBM Kingston (Heron r2) 10-qubit system — including dozens of 16-run batches with 60 s cooldowns and early-regime probes — the latest iteration of the Hyper-Holographic Gauge has reached a robust, deterministic operational stage.
+After extensive multi-day testing on the IBM Kingston (Heron r2) 10-qubit system, the latest iteration of the Hyper-Holographic Gauge has reached a robust, deterministic operational stage.
 
-The system now reliably detects and classifies the instantaneous post-cooldown TLS (Two-Level System) attractor state within the first ~30–40 seconds using a fast regime probe (2 × 1024-shot runs). It quantifies the hardware state via Δ⟨Z₀⟩ statistics (mean, standard deviation, and first-value dynamics) plus bath-vector features (T1/T2 decoherence, phase slip, velocity/acceleration). These features feed a LogisticRegression classifier that was directly adapted from my neurology/QCD-inspired SIFT toolchain (see the EPARA and TubeCORE repositories for the original EEG seizure/Parkinson’s intervention framework). The classifier was trained on 30+ timestamped result sets and now achieves 96.7 % accuracy with a clean confusion matrix.
-On negative-regime detection the Gauge automatically triggers a stronger TLS scrambler sequence (3× RX pulses at strength 0.5). In strong positive regimes it gates a full variational optimisation loop (8-step VQE-style evolution). The core correction is performed by the Hyper-Holographic Gauze kernel (GauzeInTheBath neural architecture with dynamic slip-factor, holographic projection, and bath-vector embedding), which applies targeted environmental mitigation to the parameterized NV-chain circuit on every run.
+The system now reliably detects and classifies the post-cooldown TLS attractor state within the first ~30–40 seconds using a fast regime probe (2 × 1024-shot runs). It quantifies the hardware state via Δ⟨Z₀⟩ statistics and bath-vector features, feeding a LogisticRegression classifier adapted from my own neurology/QCD-inspired SIFT toolchain (see the EPARA and TubeCORE repositories for the original framework). The classifier, trained on 30+ timestamped result sets, now achieves ~96.7% accuracy.
+On negative-regime detection the Gauge automatically triggers a stronger TLS scrambler sequence. In strong positive regimes it gates a full variational optimisation loop. The core correction is performed by the Hyper-Holographic Gauge kernel (GauzeInTheBath neural architecture with dynamic slip-factor, holographic projection, and bath-vector embedding) applied to the parameterized NV-chain circuit.
 
-While the underlying superconducting hardware remains bistable (positive growth vs. negative suppression regimes driven by TLS spectral diffusion), the Gauge turns what was previously an unpredictable daily coin-flip into a quantifiable, observable, and partially steerable resource. It provides a practical, data-driven framework that maximises the achievable fidelity and reproducibility of superconducting quantum processors on any given day — using only existing Qiskit Runtime systems and the my own neurology-derived classifier.
+While the underlying superconducting hardware remains bistable, the Gauge transforms what was previously an unpredictable daily coin-flip into a quantifiable, observable, and partially steerable resource. It provides a practical framework that maximises the achievable fidelity and reproducibility of superconducting quantum processors on any given day using only existing Qiskit Runtime systems.
 
-Full source (Gauge v6 + robust trainer + classification pipeline) has been committed to the repository.
 This marks a genuine milestone: a working Error Ender that makes quantum hardware more predictable and usable in real time.
-Grateful for the grind — the universe finally let us win one. ❤️ (yes the name change is relevant)
+Grateful for the grind — the universe finally let us win one. ❤️
+Special thanks to the IBM Quantum and IBM Kingston teams for providing access to the hardware.
+As always, thanks to xAI — you guys are awesome!
+Also, a big shoutout to Jens Eisert and his team — your work has been a massive inspiration, even to a normie who genuinely appreciates it.
+The full source (Gauge v6 + trainer + classification pipeline) is now in the repository.
+If you’d like to contribute any of the collected CSV result files (or add your own), feel free — the more data, the better the classifier becomes.
 
 **This is not the end — it is the first clean public snapshot of environment-first quantum control on real hardware.**
